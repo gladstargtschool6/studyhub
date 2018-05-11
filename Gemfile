@@ -63,6 +63,7 @@ group :test do
   gem 'rspec-rails', '~> 3.6'
   gem 'factory_girl_rails'
   gem 'rails-controller-testing'
+  gem 'phantomjs', :require => 'phantomjs/poltergeist'
   gem 'headless'
   gem 'poltergeist'
   gem 'database_cleaner'
