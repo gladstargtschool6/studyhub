@@ -65,6 +65,7 @@ group :test do
   gem 'rails-controller-testing'
   gem 'phantomjs', :require => 'phantomjs/poltergeist'
   gem 'headless'
+  gem 'shoulda-matchers'
   gem 'poltergeist'
   gem 'database_cleaner'
 end
