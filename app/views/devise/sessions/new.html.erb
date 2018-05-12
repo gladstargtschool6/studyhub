@@ -24,7 +24,9 @@
             <%= f.submit "Log in", class: 'form-control login-button' %>
           </div>
         <% end %>
-
+        <div>
+      <%= link_to "Sign in with GitHub", user_github_omniauth_authorize_path, class: 'form-control login-button'%>
+        </div>
         <%# <%= render "devise/shared/links" %>
     </div>
   </div>
