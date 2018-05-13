@@ -306,11 +306,8 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_girl_rails
-<<<<<<< HEAD
-  figaro
-=======
   faker
->>>>>>> user_page
+  figaro
   headless
   jbuilder (~> 2.5)
   jquery-rails

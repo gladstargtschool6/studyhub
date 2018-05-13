@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2018_05_12_151438) do
-=======
-ActiveRecord::Schema.define(version: 2018_05_11_160225) do
 
   create_table "answers", force: :cascade do |t|
     t.text "content"
@@ -47,7 +44,6 @@ ActiveRecord::Schema.define(version: 2018_05_11_160225) do
     t.index ["category_id"], name: "index_questions_on_category_id"
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
->>>>>>> user_page
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
