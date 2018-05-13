@@ -1,0 +1,9 @@
+<div class="card" id='<%= question_path(question.id)%>'>
+  <h3 class="card-header"><%= truncate (question.title)%></h3>
+  <div class="card-block">
+  
+    <h4 class="card-title">Posted by <%= question.users.name %></h4>
+    <p class="card-text"><%= question.content %></p>
+    <%= link_to "I'm interested", question_path(question.id), class: 'interested' %>
+  </div>
+</div>

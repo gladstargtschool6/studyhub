@@ -2,6 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
+<<<<<<< HEAD
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   def self.from_omniauth(auth)  
@@ -12,4 +13,11 @@ class User < ApplicationRecord
       user.password = Devise.friendly_token[0,20]
     end
   end
+=======
+         :recoverable, :rememberable, :trackable, :validatable
+
+  has_many :answers
+  has_many :questions, through: :answers
+  has_many :categories
+>>>>>>> user_page
 end
