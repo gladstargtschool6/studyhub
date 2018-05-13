@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
     has_many :answers
     has_many :questions, through: :answers
-    has_many :categories
+    # has_many :categories
     
   # def self.from_omniauth(auth)  
   #   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
