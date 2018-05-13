@@ -8,5 +8,6 @@ RSpec.describe Question, type: :model do
     end
     it { should have_many(:answers) }
     it { should have_many(:users).through(:answers) }
+    it { should belong_to(:category) }
   end
 end
