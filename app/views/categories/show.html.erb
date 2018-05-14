@@ -4,13 +4,34 @@
       <div class="posted-by"></div>
       <h3><%= @category.name %></h3>
       <p>See all the Questions posted</p>
-      <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action active">question 1</a>
-        <a href="#" class="list-group-item list-group-item-action">question 2</a>
-        <a href="#" class="list-group-item list-group-item-action">question 3</a>
-        <a href="#" class="list-group-item list-group-item-action">question 4</a>
-      </div>
-      <%#= link_to 'Post new question' , new_category_question_path(question.id), class: 'interested' %>
+      <ol>
+        <% @category.questions.each do |question| %>
+          <li>
+            <div>
+            <p><%= question.title %><%= link_to 'more', category_question_path(@category)%></p>
+            </div>
+          </li>
+        <% end %>
+      </ol>
+
+    <div class="form-group mx-sm-3 mb-2">
+  
+      <%= link_to 'Edit Category Name' , new_category_path(@category), class: 'interested' %><br>
+      <%= link_to 'Delete category' , category_path(@category), class: 'interested' %><br>
     </div>
+
+    <div class="form-group mx-sm-3 mb-2">
+    
+    <%#= form_for(@question, :url => category_questions_path(@category)) do |f| %>
+    <%= form_for([@category, @question]) do |f| %>
+    <%= f.label :title %><br>
+    <%= f.text_field :title , :class => "form-control-plaintext"%><br>
+    <%= f.label :content %><br>
+    <%= f.text_area :content , :class => "form-control-plaintext"%><br>
+
+    <%= f.submit :class => "btn btn-primary" %>
+    <% end %>
+    
+</div>
   </div><!-- row -->
 </div>

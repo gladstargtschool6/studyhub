@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
    
     def show
         @category = Category.find(params[:id])
+        @question = @category.questions.build
     end
     def create
         @category = Category.new(category_params)
