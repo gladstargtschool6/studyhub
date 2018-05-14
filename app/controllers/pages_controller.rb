@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
     def index
-       @categories = Category.limit(5) 
+       @categories = Category.all
     end
    
 end
