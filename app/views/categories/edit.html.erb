@@ -1,0 +1,10 @@
+<h1>Edit Category Name</h1>
+<div class="form-group mx-sm-3 mb-2">
+
+    <%= form_for(edit_category_path) do |f|%>
+    <%= f.label :name%><br>
+    <%=f.text_field :name , :class => "form-control-plaintext" %><br>
+    <%= f.submit :class => "btn btn-primary" %>
+    <% end %>
+    
+</div>
