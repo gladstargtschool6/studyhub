@@ -11,6 +11,10 @@ class CategoriesController < ApplicationController
         @category.save
         redirect_to category_path(@category)
     end
+    def new
+        @category = Category.new(category_params)
+    end
+    
 
     private 
     def category_params
