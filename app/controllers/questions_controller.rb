@@ -23,7 +23,6 @@ class QuestionsController < ApplicationController
         redirect_to category_path(@category)
     end
     def destroy
-    #     @category = Category.find(params[:category_id])
         @question = Question.find(params[:id])
         @question.destroy
         redirect_to category_path(@question.category)
