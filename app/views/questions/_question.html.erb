@@ -1,8 +1,10 @@
   <ol>
     <% @category.questions.each do |question| %>
       <li>
-        <p><%=question.title%></br>
-        <%= link_to 'more', category_question_path(@category, question) %></p>
+        <table>
+        <tb><%=question.title%></tb> <br>
+        <tb><%= link_to 'Answer', category_question_path(@category, question) %></tb>
       </li>
+      </table>
     <% end %>
   </ol>

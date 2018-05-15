@@ -8,6 +8,11 @@ class QuestionsController < ApplicationController
         @question = @category.questions.create(question_params)
         redirect_to category_path(@category)
     end
+    def new
+        @category = Category.find(params[:category_id]) # finding the parent 
+        @question = @category.questions.build(question_params)
+        # redirect_to category_path(@category)
+    end
     
     def edit
         @category = Category.find(params[:category_id])
@@ -20,7 +25,7 @@ class QuestionsController < ApplicationController
         @category = Category.find(params[:category_id]) # finding the parent 
         @question = @category.questions.find(params[:id])
         @question.update_attributes(question_params)
-        redirect_to category_path(@category)
+        redirect_to category_question_path(@category)
     end
     def destroy
         @question = Question.find(params[:id])
@@ -30,7 +35,7 @@ class QuestionsController < ApplicationController
 
     private 
     def question_params
-        params.require(:question).permit(:title, :content)
+        params.permit(:title, :content)
     end
     
 end
