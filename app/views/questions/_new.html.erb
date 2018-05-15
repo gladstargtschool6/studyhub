@@ -1,9 +1,6 @@
 <h1>Create a new Question page</h1>
-
-<div class="form-group mx-sm-3 mb-2">
-    
     <%#= form_for(@question, :url => category_questions_path(@category)) do |f| %>
-    <%= form_for([@category, @question]) do |f| %>
+    <%= form_for([@category, Question.new]) do |f| %>
     <%= f.label :title %><br>
     <%= f.text_field :title , :class => "form-control-plaintext"%><br>
     <%= f.label :content %><br>
@@ -11,5 +8,3 @@
 
     <%= f.submit :class => "btn btn-primary" %>
     <% end %>
-    
-</div>

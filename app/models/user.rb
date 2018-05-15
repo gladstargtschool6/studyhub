@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
     has_many :answers
     has_many :questions, through: :answers
+    accepts_nested_attributes_for :questions
     # has_many :categories
     
   # def self.from_omniauth(auth)  
