@@ -8,14 +8,14 @@ RSpec.feature "user logs in" do
     click_link "/users/auth/github"
     expect(page).to have_content("Jesse Spevack")
     expect(page).to have_link("Logout")
-    end
+  end
 
   def stub_omniauth
-  # first, set OmniAuth to run in test mode
-  OmniAuth.config.test_mode = true
-  # then, provide a set of fake oauth data that
-  # omniauth will use when a user tries to authenticate:
-  OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+    # first, set OmniAuth to run in test mode
+    OmniAuth.config.test_mode = true
+    # then, provide a set of fake oauth data that
+    # omniauth will use when a user tries to authenticate:
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
       provider: "github",
       uid: "12345678910",
       info: {

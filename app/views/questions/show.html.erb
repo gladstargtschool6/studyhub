@@ -1,21 +1,2 @@
 <h1>Question show page</h1>
 <p>/categories/:category_id/questions/:id</p>
-
-<div class="form-group mx-sm-3 mb-2">
-    
-    <%= form_for(@category.questions.build, :url => new_category_question_path(@category)) do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title , :class => "form-control-plaintext"%>
-    <%= f.text_field :content , :class => "form-control-plaintext"%>
-
-    <%= f.submit :class => "btn btn-primary" %>
-    <% end %>
-    
-</div>
-
-
-
-
-
-<%#= link_to 'Edit Category Name' , new_category_path(@category), class: 'interested' %><br>
-<%#= link_to 'Delete category' , category_path(@category), class: 'interested' %>

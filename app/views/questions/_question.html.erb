@@ -1,11 +1,8 @@
-<div class="card" id='<%= category_question_path(question.id)%>'>
-  <h3 class="card-header"><%= truncate (question.title)%></h3>
-
-  <div class="card-block">
-  
-    <h4 class="card-title">Posted by <%= question.users.name %></h4>
-    <p class="card-text"><%= question.content %></p>
-    <%= link_to "Edit Question", edit_category_question_path(question.id), class: 'interested' %>
-    <%= link_to "Delete Question", category_question_path(question.id), class: 'interested' %>
-  </div>
-</div>
+  <ol>
+        <% Question.all.each do |question| %>
+          <li>
+            <p><%= question.title %></p><%= link_to 'show' ,edit_category_question_path(question.id)%>
+          </li>
+        <% end %>
+        
+  </ol>
