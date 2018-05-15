@@ -4,14 +4,8 @@
 <h2><%= @question.title%></h2>
 <p><%= @question.content%></p>
 
-<button type="button" class=" btn btn-secondary btn-sm"><%= link_to 'Edit question' , edit_category_question_path(@question.category, @question) %></button>
-<button type="button" class=" btn btn-secondary btn-sm"><%= link_to "Delete", [@question.category, @question], method: :delete, data: {confirm: 'Are you sure"'}%></button>
-
-    <%= form_for([@question.category, @question]) do |f| %>
-    <%= f.label :title %><br>
-    <%= f.text_field :title , :class => "form-control-plaintext"%><br>
-    <%= f.label :content %><br>
-    <%= f.text_area :content , :class => "form-control-plaintext"%><br>
-
-    <%= f.submit :class => "btn btn-primary" %>
-    <% end %>
+<button type="button" class="btn btn-secondary btn-sm"><%= link_to 'Edit question' , edit_category_question_path(@question.category, @question) %></button>
+<%= button_to "Detele", category_question_path(@question.category, @question),:method => :delete, :class => "btn btn-secondary btn-sm"%>
+<%#= form_tag(category_question_path(@question.category, @question), :confirm => "Are you sure?", :method => :delete) do %>
+    <!--<button type="submit" class=" btn btn-secondary btn-sm">Delete</button>!-->
+<%# end %>

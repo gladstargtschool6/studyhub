@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
     def index
+        @category = Category.find(params[:category_id])
         
-
     end
     def create
         @category = Category.find(params[:category_id]) # finding the parent 
@@ -20,7 +20,13 @@ class QuestionsController < ApplicationController
         @category = Category.find(params[:category_id]) # finding the parent 
         @question = @category.questions.find(params[:id])
         @question.update_attributes(question_params)
-        redirect_to category_question_path(@category, @question)
+        redirect_to category_path(@category)
+    end
+    def destroy
+    #     @category = Category.find(params[:category_id])
+        @question = Question.find(params[:id])
+        @question.destroy
+        redirect_to category_path(@question.category)
     end
 
     private 
