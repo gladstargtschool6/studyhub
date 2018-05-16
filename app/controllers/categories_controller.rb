@@ -8,10 +8,6 @@ class CategoriesController < ApplicationController
        end
     #    render :action => 'index'
     end
-    def show
-        @category = Category.find(params[:id])
-        # @question = @category.questions.build
-    end
     def create
         @category = Category.new(category_params)
         @category.name = params[:category][:name]
@@ -20,6 +16,23 @@ class CategoriesController < ApplicationController
     end
     def new
         @category = Category.new(category_params)
+    end
+    def edit
+        @category = Category.find(params[:id])
+    end
+    def show
+        @category = Category.find(params[:id])
+    end
+    def update
+        # raise params.inspect
+        @category = Category.find(params[:id])  
+        @category.update_attributes(category_params)
+        redirect_to category_path(@category)
+    end
+    def destroy
+        @category = Category.find(params[:id])
+        @category.destroy
+        redirect_to category_path(@category)
     end
     
 

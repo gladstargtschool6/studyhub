@@ -6,10 +6,7 @@
       <div class="col-sm-7">
         <%= render 'layouts/navigation/header' %>
         
-      <%= form_tag(categories_path(@category), :method => "get", id: "search-form") do %>
-        <%= text_field_tag :search, params[:search], placeholder: "Search Questions" %>
-        <%= submit_tag "Search", :name => nil %>
-      <% end %>
+    
       </div><!-- col-sm-7 -->
 
       <!-- Elements collapses on smaller devices -->

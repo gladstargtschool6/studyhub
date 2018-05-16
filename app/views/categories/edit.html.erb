@@ -1,0 +1,9 @@
+    
+    <h1>Edit category Name</h1>
+    <div>
+        <%= form_for @category, as: :category, url: category_path(@category), method: :patch do |f| %>
+        
+        <%= f.text_field :name , :class => "form-control-plaintext", :placeholder => (@category.name) %>
+        <%= f.submit%>
+        <% end %>
+    </div>
