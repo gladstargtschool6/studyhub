@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+    before_action :redirect_if_not_signed_in
     def index
         @category = Category.find(params[:category_id])
         
@@ -6,11 +7,13 @@ class QuestionsController < ApplicationController
     def create
         @category = Category.find(params[:category_id]) # finding the parent 
         @question = @category.questions.create(question_params)
+        
+        @question.save
         redirect_to category_path(@category)
     end
     def new
         @category = Category.find(params[:category_id]) # finding the parent 
-        @question = @category.questions.build(question_params)
+        @question = @category.questions.new(question_params)
         # redirect_to category_path(@category)
     end
     
@@ -21,13 +24,14 @@ class QuestionsController < ApplicationController
     def show
        @question = Question.find(params[:id]) 
     end
-    def update
+    def update # params are perfect but doesn't update
+        # raise params.inspect
         @category = Category.find(params[:category_id]) # finding the parent 
         @question = @category.questions.find(params[:id])
         @question.update_attributes(question_params)
         redirect_to category_question_path(@category)
     end
-    def destroy
+    def destroy # work good
         @question = Question.find(params[:id])
         @question.destroy
         redirect_to category_path(@question.category)

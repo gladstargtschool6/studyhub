@@ -12,10 +12,7 @@
   <body>
   
   <%= render 'layouts/navigation' %>
-    <%= form_tag(categories_path(@category), :method => "get", id: "search-form") do %>
-        <%= text_field_tag :search, params[:search], placeholder: "Search Questions" %>
-        <%= submit_tag "Search", :name => nil %>
-    <% end %>
+  
   <%= yield %>
   </body>
 </html>

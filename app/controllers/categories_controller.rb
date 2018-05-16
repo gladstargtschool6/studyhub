@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+    before_action :redirect_if_not_signed_in
+
     def index
        @categories = Category.all
        if params[:search]
@@ -23,16 +25,17 @@ class CategoriesController < ApplicationController
     def show
         @category = Category.find(params[:id])
     end
-    def update
+    def update # same issue doesn't work
         # raise params.inspect
         @category = Category.find(params[:id])  
         @category.update_attributes(category_params)
         redirect_to category_path(@category)
     end
-    def destroy
+    def destroy # doesn't work
         @category = Category.find(params[:id])
         @category.destroy
-        redirect_to category_path(@category)
+        # raise params.inspect
+        redirect_to 'pages#index'
     end
     
 
