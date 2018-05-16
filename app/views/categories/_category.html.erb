@@ -2,6 +2,6 @@
   <h3 class="card-header"><%= truncate (category.name)%></h3>
   <div class="card-block">
   
-    <%= link_to "See all questions", category_path(category.id), class: 'interested' %>
+    <%= link_to "See all questions", category_url(category.id), class: 'interested' %>
   </div>
 </div>

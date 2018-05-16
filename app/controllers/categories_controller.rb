@@ -1,6 +1,13 @@
 class CategoriesController < ApplicationController
-   
-    
+    def index
+       @categories = Category.all
+       if params[:search]
+        @categories = Category.search(params[:search]).order("created_at DESC")
+       else
+        @categories = Category.all
+       end
+    #    render :action => 'index'
+    end
     def show
         @category = Category.find(params[:id])
         # @question = @category.questions.build
