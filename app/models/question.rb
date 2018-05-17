@@ -5,6 +5,7 @@ class Question < ApplicationRecord
     belongs_to :category
 
     validates :title, presence: true
+    validates :content, presence: true
     # , length: { minimum: 5, maximum: 100 }
     
     # validates :category_id, presence: true

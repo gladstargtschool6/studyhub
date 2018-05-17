@@ -4,7 +4,7 @@
     
     <%= form_for(Category.new) do |f| %>
     <%= f.label :name %>
-    <%= f.text_field :name , :class => "form-control-plaintext"%>
+    <%= f.text_field :name , :class => "form-control-plaintext", :placeholder => (@category.errors.full_messages_for(:name).first || "Type a valid name") %>
     
     <%= f.submit :class => "btn btn-primary" %>
     <% end %>

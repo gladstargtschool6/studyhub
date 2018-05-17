@@ -17,7 +17,7 @@ class CategoriesController < ApplicationController
             redirect_to category_path(@category)
         else
             @categories = Category.all
-            render :index
+            render :new
         end
     end
     def new

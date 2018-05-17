@@ -2,9 +2,9 @@
     <%#= form_for(@question, :url => category_questions_path(@category)) do |f| %>
     <%= form_for([@category, Question.new]) do |f| %>
     <%= f.label :title %><br>
-    <%= f.text_field :title , :class => "form-control-plaintext"%><br>
+    <%= f.text_field :title , :class => "form-control-plaintext" ,:placeholder => (@question.errors.full_messages_for(:title).first || "Type a valid title")%><br>
     <%= f.label :content %><br>
-    <%= f.text_area :content , :class => "form-control-plaintext"%><br>
+    <%= f.text_area :content , :class => "form-control-plaintext" ,:placeholder => (@question.errors.full_messages_for(:content).first || "Type a valid content")%><br>
 
     <%= f.submit :class => "btn btn-primary" %>
     <% end %>

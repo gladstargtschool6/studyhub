@@ -2,6 +2,8 @@
   <div class="row">
     <%= render 'side_menu_content' %>
     <%= render 'main_menu' %>
+ 
+
   <% if @categories.blank? %>
   <h4>There are no categories containing the term <%= params[:search] %>.</h4>
 <% end %>
