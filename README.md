@@ -48,13 +48,13 @@ intended to be deployed on Heruko soon.
 
 ## Built With
 
-* [Ruby-On-Rails](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Devise](https://maven.apache.org/) - Authentication login/logout/signin
+* [Ruby-On-Rails](http://guides.rubyonrails.org/) - The web framework used
+* [Devise](https://github.com/plataformatec/devise) - Authentication login/logout/signin
 
 
 ## Authors
 
-* **Salma Elshahawy** - *Initial work* - [PurpleBooth](https://github.com/salma71)
+* **Salma Elshahawy** - *Initial work* - [Salma71](https://github.com/salma71)
 
 ## License
 
