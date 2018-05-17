@@ -3,7 +3,7 @@ class Category < ApplicationRecord
     has_many :questions
     # belongs_to :user
 
-  validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
+  validates :name, presence: true
     # scope :Business, -> { where(name: 'Business') }
     # scope :toys, -> { where(category: 'toys') }
     # scope :newest_first, -> { order("created_at DESC")} 

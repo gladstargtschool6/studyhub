@@ -1,19 +1,24 @@
 class QuestionsController < ApplicationController
     before_action :redirect_if_not_signed_in
-    def index
-        @category = Category.find(params[:category_id])
+    # def index
+    #     @category = Category.find(params[:category_id])
         
-    end
-    def create
+    # end
+    def create #doesn't work
         @category = Category.find(params[:category_id]) # finding the parent 
-        @question = @category.questions.create(question_params)
+    
+        @question = @category.questions.build(question_params)
         
-        @question.save
-        redirect_to category_path(@category)
+        if @question.save
+            redirect_to category_path(@category)
+        else
+            render :new 
+        end
     end
     def new
         @category = Category.find(params[:category_id]) # finding the parent 
-        @question = @category.questions.new(question_params)
+        # byebug
+        @question = @category.questions.new
         # redirect_to category_path(@category)
     end
     
@@ -38,8 +43,8 @@ class QuestionsController < ApplicationController
     end
 
     private 
-    def question_params
-        params.permit(:title, :content)
+    def question_params #the problem is here
+        params.require(:question).permit(:title, :content)
     end
     
 end

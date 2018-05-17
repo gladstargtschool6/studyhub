@@ -2,10 +2,10 @@
   <div class="row">
     <%= render 'side_menu_content' %>
     <%= render 'main_menu' %>
-
-  </div><!-- row -->
-</div><!-- container -->
-<% if @categories.blank? %>
+  <% if @categories.blank? %>
   <h4>There are no categories containing the term <%= params[:search] %>.</h4>
 <% end %>
+  </div><!-- row -->
+</div><!-- container -->
+
   
