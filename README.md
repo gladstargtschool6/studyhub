@@ -1,4 +1,5 @@
 # StudyHub
+![alt text](https://forthebadge.com/images/badges/made-with-ruby.svg "Made With Ruby")
 
 Is a Ruby on Rails application platform for students to manage their study 
 
@@ -44,7 +45,7 @@ rspec spec/folder_name/file_name.rb
 
 ## Deployment
 
-intended to be deployed on Heruko soon.
+* [Demo on Heroku](https://damp-wave-35943.herokuapp.com/users/sign_in)
 
 ## Built With
 
