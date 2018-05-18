@@ -4,8 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
     def self.from_omniauth(auth)  
+      # binding.pry
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
+      user.name = auth.info.name
       user.uid = auth.uid
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
@@ -22,7 +24,7 @@ class User < ApplicationRecord
     validates :name, presence: true, uniqueness: true, length: { minimum: 4 }
     validates :email, presence: true, uniqueness: true, format: EMAIL_REGEX, length: { minimum: 4 }
     validates :password, presence: true, length: { minimum: 6 }
-    validates :password_confirmation, presence: true, length: { minimum: 6 } 
+    # validates :password_confirmation, presence: true, length: { minimum: 6 } 
 
 
 
