@@ -1,5 +1,4 @@
 # StudyHub
-![alt text](https://forthebadge.com/images/badges/made-with-ruby-on-rails.svg "Made With Ruby on rails")
 
 Is a Ruby on Rails application platform for students to manage their study 
 
