@@ -8,6 +8,10 @@ class Api::V1::CategoriesController < ApplicationController
        else
         @categories = Category.all
        end
+        # respond_to do |format|
+            # format.html {render :show}
+            # format.json { render json: @categories}
+        # end
        render json: @categories, status: 200
     end
     def create # working good
@@ -28,6 +32,10 @@ class Api::V1::CategoriesController < ApplicationController
     end
     def show
         @category = Category.find(params[:id])
+        respond_to do |format|
+            format.html {render :show}
+            format.json {render json: @category}
+        end
     end
     def update # now work
         # raise params.inspect

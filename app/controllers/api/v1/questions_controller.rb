@@ -5,6 +5,10 @@ module Api
             def index
                 @category = Category.find(params[:category_id])
                 @question = @category.questions.all
+                respond_to do |format|
+                format.html
+                format.json { render json: @question}
+            end
                 render json: @question, status: 200
             end
             def create 

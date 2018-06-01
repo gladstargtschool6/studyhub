@@ -1,0 +1,15 @@
+<div id="single-post-content" class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <h3><%= @category.name %></h3>
+      <p>See all the posted Questions</p>
+      
+        <%= render 'questions/question'%>
+        
+      <button type="button" class="btn btn-secondary btn btn-secondary btn-sm"><%= link_to 'Create question' , new_category_question_path(@category) %><br></button>
+      <%#= render 'questions/new'%>
+      <button type="button" class="btn btn-secondary btn-sm"><%= link_to 'Edit category' , edit_category_path(@category) %></button>
+      <%= button_to "Delete", category_path(@category),:method => :delete, :class => "btn btn-secondary btn-sm"%>
+    </div>
+  </div>
+</div>
