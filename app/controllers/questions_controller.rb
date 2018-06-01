@@ -2,7 +2,6 @@ class QuestionsController < ApplicationController
     before_action :redirect_if_not_signed_in
     def index
         # @category = Category.find(params[:category_id])
-        
     end
     def create 
         @category = Category.find(params[:category_id]) # finding the parent 
@@ -28,6 +27,10 @@ class QuestionsController < ApplicationController
     end
     def show
        @question = Question.find(params[:id]) 
+        respond_to do |format|
+            format.html {render :show}
+            format.json {render json: @question}
+        end
     end
     def update # params are perfect
         # raise params.inspect
