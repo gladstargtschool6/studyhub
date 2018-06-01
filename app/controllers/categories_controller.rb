@@ -28,6 +28,10 @@ class CategoriesController < ApplicationController
     end
     def show
         @category = Category.find(params[:id])
+        respond_to do |format|
+            format.html {render :show}
+            format.json {render json: @category}
+        end
     end
     def update # now work
         # raise params.inspect
