@@ -6,7 +6,11 @@ class CategoriesController < ApplicationController
        if params[:search]
         @categories = Category.search(params[:search]).order("created_at DESC")
        else
-        @categories = Category.all
+        respond_to do |format|
+            format.html {render :index}
+            format.json {render json: @categories}
+        end
+        # @categories = Category.all
        end
     #    render :action => 'index'
     end
@@ -22,9 +26,17 @@ class CategoriesController < ApplicationController
     end
     def new
         @category = Category.new
+        respond_to do |format|
+            format.html {render :new}
+            format.json {render json: @category}
+        end
     end
     def edit
         @category = Category.find(params[:id])
+        respond_to do |format|
+            format.html {render :edit}
+            format.json {render json: @category}
+        end
     end
     def show
         @category = Category.find(params[:id])

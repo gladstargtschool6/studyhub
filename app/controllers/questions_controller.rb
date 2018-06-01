@@ -18,12 +18,20 @@ class QuestionsController < ApplicationController
         @category = Category.find(params[:category_id]) # finding the parent 
         # byebug
         @question = @category.questions.new
+        respond_to do |format|
+            format.html {render :new}
+            format.json {render json: @question}
+        end
         # redirect_to category_path(@category)
     end
     
     def edit
         @category = Category.find(params[:category_id])
         @question = @category.questions.find(params[:id]) 
+        respond_to do |format|
+            format.html {render :edit}
+            format.json {render json: @question}
+        end
     end
     def show
        @question = Question.find(params[:id]) 
