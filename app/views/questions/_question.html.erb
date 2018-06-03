@@ -1,10 +1,10 @@
-  <ol>
-    <% @category.questions.each do |question| %>
-      <li>
-        <table>
-        <tb><%=question.title%></tb> <br>
-        <tb><%= link_to 'Answer', category_question_path(@category, question) %></tb>
-      </li>
-      </table>
-    <% end %>
-  </ol>
+    <ol>
+      <% @category.questions.each do |question| %>
+        <li>
+          <table>
+          <tb><%=question.title%></tb> <br>
+          <tb><%= link_to 'Answer', category_question_path(@category, question) %></tb>
+        </li>
+        </table>
+      <% end %>
+    </ol>

@@ -7,8 +7,10 @@ $(function(){
             method: "GET",
             url: this.href,
             // data: { name: "John", location: "Boston"}
-        }).done(function(data){
-            console.log(data);
+        }).done(function(response){
+            // console.log(response)
+            // debugger;
+            $("div.load-questions").html(response)
         });
         // get a response
 
