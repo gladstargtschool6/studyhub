@@ -10,10 +10,9 @@ class CategoriesController < ApplicationController
             format.html {render :index}
             format.json {render json: @categories}
         end
-        # @categories = Category.all
        end
-    #    render :action => 'index'
     end
+
     def create # working good
         @category = Category.new(category_params)
         @category.name = params[:category][:name]
