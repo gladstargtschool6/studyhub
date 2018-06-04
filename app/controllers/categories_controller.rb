@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
        else
         respond_to do |format|
             format.html {render :index}
-            format.json {render json: @categories}
+            format.json {render json: @categories, include: ['questions']}
         end
        end
     end
@@ -25,10 +25,12 @@ class CategoriesController < ApplicationController
     end
     def new
         @category = Category.new
-        respond_to do |format|
-            format.html {render :new}
-            format.json {render json: @category}
-        end
+        # respond_to do |format|
+        #     format.html {render :new}
+            # format.json {
+                render json: @category
+            # }
+        # end
     end
     def edit
         @category = Category.find(params[:id])
@@ -41,7 +43,7 @@ class CategoriesController < ApplicationController
         @category = Category.find(params[:id])
         respond_to do |format|
             format.html {render :show}
-            format.json {render json: @category}
+            format.json {render json: @category, include: ['questions']}
         end
     end
     def update # now work

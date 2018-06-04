@@ -1,25 +1,63 @@
-$(function(){
-    $("a.question").on("click", function (e) {
-        // alert("You clicked the link !!!!!!")
-        //fire some Ajax
-        // debugger;
-        // low level implementation
-        // $.ajax({
-        //     method: "GET",
-        //     url: this.href,
-        //     // data: { name: "John", location: "Boston"}
-        // }).success(function(response){
-        //     // console.log(response)
-        //     // debugger;
-        //     $("div.load-questions").html(response)
-        // }).error(function(notNeeded){
-        //     alert("we broke!!!!!")
-        // });
-        // get a response
-        $.get(this.href).success(function(response){
-            $("div.load-questions").html(response) 
-        })
-        // load that response into the HTML of the page
-        e.preventDefault();
-    })
+$(document).ready(function () {
+    renderQuestions();
 })
+
+class Category {
+    constructor(id, name) {
+        this.id = id
+        this.name = name
+    }
+}
+    function renderQuestions() {
+        $("a.question").on("click", function (e) {
+            $.get(this.href).success(function (response) {
+                $("div.load-questions").html(response)
+                $("div#single-post-content").fadeToggle()
+            })
+            e.preventDefault();
+        })
+    }
+    
+    // $(function() {
+    //     $("a.question").on("click", function (e) {
+    //         $.get(this.href).success(function (response) {
+    //             $("div.load-questions").html(response)
+    //             $("div#single-post-content").fadeToggle()
+    //         })
+    //         e.preventDefault();
+    //     })
+    //     $("a#new").on("click", function (e){
+    //         $.get(this.href).success(function(response){
+    //             debugger;
+    //             $("div.new-cat").html(response)
+    //         })
+    //     })
+    // })
+// }
+
+
+    
+//     const getQuestions = $("a.question").on("click", function (e) {
+//         $.get(this.href).success(function(response){
+//             $("div.load-questions").html(response) 
+//         })
+//         e.preventDefault();
+//     })
+//     const getCategories = $("a.interested").on("click", function (e) {
+//         $.get(this.href).success(function (response) {
+//             $("div.load-questions").html(response)
+//         })
+//         e.preventDefault();
+//     })
+// })
+
+    // function getQuestions() {
+    // $("a.question").on("click", function (e) {
+    //     $.get(this.href).success(function (response) {
+    //         $("div.load-questions").html(response)
+    //     })
+    //     e.preventDefault();
+    //     })
+    // }
+// }
+

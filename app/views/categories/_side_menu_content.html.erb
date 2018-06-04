@@ -1,6 +1,8 @@
     <div id="side-menu"  class="col-sm-3">
         <ul id="links-list">
-            <%= link_to "New Category", new_category_path , class: 'interested' %>
+            <%= link_to "New Category", new_category_path , id: 'new' %>
+            <div class="new-cat">
+            </div>
 
         <%= form_tag(categories_path(@category), :method => "get", id: "search-form") do %>
             <%= text_field_tag :search, params[:search], placeholder: "Search categories" %>
