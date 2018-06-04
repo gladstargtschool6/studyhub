@@ -5,10 +5,14 @@
       <p>See all the posted Questions</p>
       
         <%= render 'questions/question'%>
-        <form>
-        <input type='text'>
-        <input type='submit' />>
-        </form>
+    <%= form_for([@category, Question.new]) do |f| %>
+    <%= f.label :title %><br>
+    <%= f.text_field :title, id: "title" %><br>
+    <%= f.label :content %><br>
+    <%= f.text_area :content , id: "content"%><br>
+
+    <%= f.submit :class => "create" %>
+    <% end %>
       <button type="button" class="btn btn-secondary btn btn-secondary btn-sm"><%= link_to 'Create question' , new_category_question_path(@category) %><br></button>
       <%#= render 'questions/new'%>
       <button type="button" class="btn btn-secondary btn-sm"><%= link_to 'Edit category' , edit_category_path(@category) %></button>

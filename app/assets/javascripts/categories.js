@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    renderCategories();
     renderQuestions();
     renderAnswers();
 })
@@ -22,7 +23,35 @@ class Question {
         return `<div>${this.title}<br />${this.content}</div>`
     }
 }
-
+function renderCategories() { 
+    $("#new_category").on("submit", function (e) {
+        // alert("please work!!!!!!")
+        // url = this.action
+        // console.log(url)
+        // $.post(this.action + '.json').success(function (response) {
+            
+        $.ajax({
+            type: "POST",
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            success: function(response){
+                var $main = $("div#main-content")
+                $main.append(response);
+                // debugger;
+            }
+        });
+            // debugger;
+        //     console.log(response.included)
+        //     response.included.forEach(question => {
+        //         const questionObject = new Question(question)
+        //         console.log(questionObject)
+        //         $(`div#load-questions-${questionObject.category_id}`).append(questionObject.renderQuestion())
+        //     })
+        e.preventDefault();
+        })
+   
+//     })
+}
 
 function renderQuestions() { //works fine
     $("a.question").on("click", function (e) {
@@ -38,60 +67,33 @@ function renderQuestions() { //works fine
         e.preventDefault();
     })
 }
-function renderAnswers() { 
-    // debugger; // works only in the console 
-    // and render 1st question repeated
-    $("a#answer").on("click", function (e) {
+
+function renderAnswers() {
+    $("input.create").on("click", function (e) {
         // debugger;
-        $.get(this.href).success(function (response) {
-            // debugger;
-            $("div.load-questions").html(response)
-            $("div#single-post-content").fadeToggle()
+        console.log(this.href)
+        $.get(this.href + '.json').success(function (response) {
+            debugger;
+            console.log(response.included)
+        //     response.included.forEach(question => {
+        //         const questionObject = new Question(question)
+        //         console.log(questionObject)
+        //         $(`div#load-questions-${questionObject.category_id}`).append(questionObject.renderQuestion())
+        //     })
         })
         e.preventDefault();
     })
 }
-    
-    // $(function() {
-    //     $("a.question").on("click", function (e) {
-    //         $.get(this.href).success(function (response) {
-    //             $("div.load-questions").html(response)
-    //             $("div#single-post-content").fadeToggle()
-    //         })
-    //         e.preventDefault();
-    //     })
-    //     $("a#new").on("click", function (e){
-    //         $.get(this.href).success(function(response){
-    //             debugger;
-    //             $("div.new-cat").html(response)
-    //         })
-    //     })
-    // })
-// }
-
-
-    
-//     const getQuestions = $("a.question").on("click", function (e) {
-//         $.get(this.href).success(function(response){
-//             $("div.load-questions").html(response) 
-//         })
-//         e.preventDefault();
-//     })
-//     const getCategories = $("a.interested").on("click", function (e) {
+// function renderAnswers() { 
+//     // debugger; // works only in the console 
+//     // and render 1st question repeated
+//     $("a#answer").on("click", function (e) {
+//         // debugger;
 //         $.get(this.href).success(function (response) {
+//             // debugger;
 //             $("div.load-questions").html(response)
+//             $("div#single-post-content").fadeToggle()
 //         })
 //         e.preventDefault();
 //     })
-// })
-
-    // function getQuestions() {
-    // $("a.question").on("click", function (e) {
-    //     $.get(this.href).success(function (response) {
-    //         $("div.load-questions").html(response)
-    //     })
-    //     e.preventDefault();
-    //     })
-    // }
 // }
-
