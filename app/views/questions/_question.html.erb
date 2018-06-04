@@ -3,7 +3,7 @@
         <li>
           <table>
           <tb><%=question.title%></tb> <br>
-          <tb><%= link_to 'Answer', category_question_path(@category, question) %></tb>
+          <tb><%= link_to 'Answer', category_question_path(@category, question) , id: "answer"%></tb>
         </li>
 
         </table>

@@ -1,9 +1,9 @@
+[] cannot render the new form at the same index page
+
 [] can't turn layout off like Avi did at the video 
     => which leads that I cannot have a json hash
     `only avaliable when I render only json format`
     => also can't consume my url into postman
-
-[] cannot render the new form at the same index page
 
 [] cannot implement the prototype model
     `confused after watching your recorded study group`

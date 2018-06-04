@@ -5,7 +5,10 @@
       <p>See all the posted Questions</p>
       
         <%= render 'questions/question'%>
-        
+        <form>
+        <input type='text'>
+        <input type='submit' />>
+        </form>
       <button type="button" class="btn btn-secondary btn btn-secondary btn-sm"><%= link_to 'Create question' , new_category_question_path(@category) %><br></button>
       <%#= render 'questions/new'%>
       <button type="button" class="btn btn-secondary btn-sm"><%= link_to 'Edit category' , edit_category_path(@category) %></button>
