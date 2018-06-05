@@ -17,10 +17,8 @@ class CategoriesController < ApplicationController
         @category = Category.new(category_params)
         @category.name = params[:category][:name]
         if @category.save
-            # redirect_to category_path(@category)
             redirect_to categories_path
         else
-            # @categories = Category.all
             render :new
         end
     end

@@ -1,7 +1,8 @@
-$(document).ready(function () {
+$(document).ready(function (e) {
     renderCategories();
     renderQuestions();
-    renderAnswers();
+    // e.preventDefault()
+    // renderAnswers();
 })
 
 class Category {
@@ -27,8 +28,9 @@ class Question {
     // }
 
 }
-Question.prototype.renderQuestion = function(){
+Question.prototype.renderQuestion = function(e){
     return `<div>${this.title}<br />${this.content}</div>`
+    e.preventDefault()
 }
 function renderCategories() { 
     $("#new_category").on("submit", function (e) {         
@@ -41,7 +43,7 @@ function renderCategories() {
                 data.forEach(category => {
                     const categoryObj = new Category(category)
                     console.log(categoryObj)
-                    $(`div#main-content#/categories/${categoryObj.id}`).append(categoryObj.renderCategory())
+                    $(`div#main-content#/categories/${categoryObj.id}`).append(categoryObj.renderCategory().renderQuestion())
                 })   
             }
         })
@@ -54,7 +56,7 @@ function renderQuestions() { //works fine
         //console.log(this.href)
         $.get(this.href + '.json').success(function (response) {
             console.log(response.included)
-            response.included.forEach(question => {
+            response.included.forEach(question => { 
                 const questionObject = new Question(question)
                 console.log(questionObject)
                 $(`div#load-questions-${ questionObject.category_id}`).append(questionObject.renderQuestion())
@@ -63,33 +65,3 @@ function renderQuestions() { //works fine
         e.preventDefault();
     })
 }
-
-function renderAnswers() {
-    $("input.create").on("click", function (e) {
-        // debugger;
-        console.log(this.href)
-        $.get(this.href + '.json').success(function (response) {
-            debugger;
-            console.log(response.included)
-        //     response.included.forEach(question => {
-        //         const questionObject = new Question(question)
-        //         console.log(questionObject)
-        //         $(`div#load-questions-${questionObject.category_id}`).append(questionObject.renderQuestion())
-        //     })
-        })
-        e.preventDefault();
-    })
-}
-// function renderAnswers() { 
-//     // debugger; // works only in the console 
-//     // and render 1st question repeated
-//     $("a#answer").on("click", function (e) {
-//         // debugger;
-//         $.get(this.href).success(function (response) {
-//             // debugger;
-//             $("div.load-questions").html(response)
-//             $("div#single-post-content").fadeToggle()
-//         })
-//         e.preventDefault();
-//     })
-// }
