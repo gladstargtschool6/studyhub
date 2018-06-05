@@ -42,14 +42,16 @@ or if you interested in running specs for a particular file run
 rspec spec/folder_name/file_name.rb
 ```
 
-## Deployment
-
-intended to be deployed on Heruko soon.
-
 ## Built With
 
 * [Ruby-On-Rails](http://guides.rubyonrails.org/) - The web framework used
 * [Devise](https://github.com/plataformatec/devise) - Authentication login/logout/signin
+* [Github-OmniAuth](https://github.com/omniauth/omniauth-github) - Authorization by a third party service
+
+## API and Ajax branch
+
+* Branch **serialize** is the branch containing serialize the data to be consumable by the Api and json
+* To checkout that branch: after fork/clone the repo, in terminal, run `git checkout serialize`
 
 
 ## Authors
