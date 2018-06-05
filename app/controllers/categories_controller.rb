@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
     before_action :redirect_if_not_signed_in
 
     def index
-       @categories = Category.all.limit(5).order("created_at DESC")
+       @categories = Category.all.order("created_at DESC")
        if params[:search]
         @categories = Category.search(params[:search]).order("created_at DESC")
        else
@@ -17,7 +17,8 @@ class CategoriesController < ApplicationController
         @category = Category.new(category_params)
         @category.name = params[:category][:name]
         if @category.save
-            redirect_to category_path(@category)
+            # redirect_to category_path(@category)
+            redirect_to categories_path
         else
             # @categories = Category.all
             render :new
@@ -25,10 +26,12 @@ class CategoriesController < ApplicationController
     end
     def new
         @category = Category.new
-        respond_to do |format|
-            format.html {render :new}
-            format.json {render json: @category, layout: false}
-        end
+        # respond_to do |format|
+            # format.html {
+                redirect_to @category
+            # }
+            # format.json {render json: @category, layout: false}
+        # end
     end
     def edit
         @category = Category.find(params[:id])

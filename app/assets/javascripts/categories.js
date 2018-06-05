@@ -5,10 +5,13 @@ $(document).ready(function () {
 })
 
 class Category {
-    constructor(id, name, questions_id) {
-        this.id = id
-        this.name = name
-        this.questions_id = questions_id
+    constructor(categoryObj) {
+        this.id = categoryObj.id
+        this.name = categoryObj.attributes.name
+        this.questions_id = categoryObj.relationships.questions.data.id
+    }
+    renderCategory() {
+        return `<div>${this.name}<br />`
     }
 }
 class Question {
@@ -24,34 +27,21 @@ class Question {
     }
 }
 function renderCategories() { 
-    $("#new_category").on("submit", function (e) {
-        // alert("please work!!!!!!")
-        // url = this.action
-        // console.log(url)
-        // $.post(this.action + '.json').success(function (response) {
-            
+    $("#new_category").on("submit", function (e) {         
         $.ajax({
             type: "POST",
             url: $(this).attr('action'),
             data: $(this).serialize(),
-            success: function(response){
-                var $main = $("div#main-content")
-                $main.append(response);
-                // debugger;
+            success: function(data){
+                // debugger
+                const categoryObj = new Category(category)
+                console.log(categoryObj)
+                $(`div#main-content#/categories/${categoryObj.id}`).append(categoryObj.renderCategory())
             }
-        });
-            // debugger;
-        //     console.log(response.included)
-        //     response.included.forEach(question => {
-        //         const questionObject = new Question(question)
-        //         console.log(questionObject)
-        //         $(`div#load-questions-${questionObject.category_id}`).append(questionObject.renderQuestion())
-        //     })
-        e.preventDefault();
         })
-   
-//     })
-}
+        e.preventDefault();
+    })
+} 
 
 function renderQuestions() { //works fine
     $("a.question").on("click", function (e) {
