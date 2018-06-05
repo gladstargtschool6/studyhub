@@ -22,9 +22,13 @@ class Question {
         this.category_id = questionObject.relationships.category.data.id
     }
 
-    renderQuestion(){
-        return `<div>${this.title}<br />${this.content}</div>`
-    }
+    // renderQuestion(){
+    //     return `<div>${this.title}<br />${this.content}</div>`
+    // }
+
+}
+Question.prototype.renderQuestion = function(){
+    return `<div>${this.title}<br />${this.content}</div>`
 }
 function renderCategories() { 
     $("#new_category").on("submit", function (e) {         
@@ -34,9 +38,11 @@ function renderCategories() {
             data: $(this).serialize(),
             success: function(data){
                 // debugger
-                const categoryObj = new Category(category)
-                console.log(categoryObj)
-                $(`div#main-content#/categories/${categoryObj.id}`).append(categoryObj.renderCategory())
+                data.forEach(category => {
+                    const categoryObj = new Category(category)
+                    console.log(categoryObj)
+                    $(`div#main-content#/categories/${categoryObj.id}`).append(categoryObj.renderCategory())
+                })   
             }
         })
         e.preventDefault();
