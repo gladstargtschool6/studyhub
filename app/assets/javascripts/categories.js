@@ -53,7 +53,7 @@ function renderCategories() {
 function renderQuestions() { //works fine
     $("a.question").on("click", function (e) {
         const id = $(this).data('id')
-         $(`div#load-questions-${id}`).html('')
+         $(`div#load-questions-${id}`).html('').toggle()
 
          
         $.get(this.href + '.json').success(function (response) {
