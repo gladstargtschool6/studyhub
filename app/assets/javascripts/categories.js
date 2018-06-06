@@ -52,15 +52,33 @@ function renderCategories() {
 
 function renderQuestions() { //works fine
     $("a.question").on("click", function (e) {
-        //console.log(this.href)
+        const id = $(this).data('id')
+         $(`div#load-questions-${id}`).html('')
+
+         
         $.get(this.href + '.json').success(function (response) {
             console.log(response.included)
             response.included.forEach(question => { 
                 const questionObject = new Question(question)
                 console.log(questionObject)
-                $(`div#load-questions-${ questionObject.category_id}`).append(questionObject.renderQuestion())
+                $(`div#load-questions-${questionObject.category_id}`).append(questionObject.renderQuestion())
             })
         })
         e.preventDefault();
     })
 }
+
+
+// fetch(this.href + '.json', {
+//     credentials: 'include'
+// })
+//     .then(res => res.json())
+//     .then(response => {
+//         console.log(response.included)
+//         response.included.forEach(question => {
+//             const questionObject = new Question(question)
+//             console.log(questionObject)
+//             $(`div#load-questions-${questionObject.category_id}`).append(questionObject.renderQuestion())
+
+//         })
+//     })

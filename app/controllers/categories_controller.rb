@@ -26,7 +26,7 @@ class CategoriesController < ApplicationController
         @category = Category.new
         # respond_to do |format|
             # format.html {
-                redirect_to @category
+                redirect_to @categories_path
             # }
             # format.json {render json: @category, layout: false}
         # end
@@ -55,7 +55,8 @@ class CategoriesController < ApplicationController
         @category = Category.find(params[:id])
         @category.destroy
         # raise params.inspect
-        redirect_to new_category_path(@category)
+        # redirect_to new_category_path(@category)
+        redirect_to categories_path
     end
     
 
