@@ -1,11 +1,14 @@
 <div class="card" id='<%= category_path(category.id)%>'>
   <h3 class="card-header"><%= truncate (category.name)%></h3>
   <div class="card-block">
-  
+    <p>
     <%= link_to "See all questions", category_url(category.id), class: 'question', data: {id: category.id } %>
+    </p>
       <div  id="load-questions-<%= category.id %>">
       </div>
-      <%= link_to "show page", category_url(category.id)%>
+    <p>
+    <%= link_to "add more questions", category_url(category.id)%>
+    </p>
   </div>
 
 </div>
