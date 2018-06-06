@@ -23,13 +23,13 @@ class Question {
         this.category_id = questionObject.relationships.category.data.id
     }
 
-    // renderQuestion(){
-    //     return `<div>${this.title}<br />${this.content}</div>`
-    // }
-
 }
 Question.prototype.renderQuestion = function(e){
-    return `<div>${this.title}<br />${this.content}</div>`
+    return `
+            <div>Title: ${this.title}<br />
+            Content: ${this.content}</div>
+            <hr>
+                                    `
     e.preventDefault()
 }
 function renderCategories() { 
@@ -39,7 +39,6 @@ function renderCategories() {
             url: $(this).attr('action'),
             data: $(this).serialize(),
             success: function(data){
-                // debugger
                 data.forEach(category => {
                     const categoryObj = new Category(category)
                     console.log(categoryObj)
