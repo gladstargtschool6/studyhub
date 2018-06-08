@@ -1,26 +1,25 @@
 $(document).ready(function (e) {
     renderCategories();
     renderQuestions();
-    // e.preventDefault()
-    // renderAnswers();
 })
 
 class Category {
     constructor(categoryObj) {
         this.id = categoryObj.id
         this.name = categoryObj.attributes.name
-        this.questions_id = categoryObj.relationships.questions.data.id
+        this.questionsId = categoryObj.relationships.questions.data.id
     }
     renderCategory() {
         return `<div>${this.name}<br />`
     }
+ 
 }
 class Question {
     constructor(questionObject) {
         this.id = questionObject.id
         this.title = questionObject.attributes.title
         this.content = questionObject.attributes.content
-        this.category_id = questionObject.relationships.category.data.id
+        this.categoryId = questionObject.relationships.category.data.id
     }
 
 }
@@ -32,6 +31,7 @@ Question.prototype.renderQuestion = function(e){
                                     `
     e.preventDefault()
 }
+
 function renderCategories() { 
     $("#new_category").on("submit", function (e) {         
         $.ajax({
@@ -54,15 +54,27 @@ function renderQuestions() { //works fine
     $("a.question").on("click", function (e) {
         const id = $(this).data('id')
          $(`div#load-questions-${id}`).html('').toggle()
-
          
         $.get(this.href + '.json').success(function (response) {
             console.log(response.included)
+            const myObj = response.included
+            console.log(myObj);
+            response.included.sort(function (a, b) {
+                const nameA = a.attributes.title;
+                // console.log(nameA)
+                const nameB = b.attributes.title;
+                if (nameA > nameB) {
+                    return 1;
+                }
+                
+            })
             response.included.forEach(question => { 
                 const questionObject = new Question(question)
-                console.log(questionObject)
-                $(`div#load-questions-${questionObject.category_id}`).append(questionObject.renderQuestion())
+                // console.log(questionObject)
+                $(`div#load-questions-${questionObject.categoryId}`).append(questionObject.renderQuestion())
+                
             })
+            
         })
         e.preventDefault();
     })
